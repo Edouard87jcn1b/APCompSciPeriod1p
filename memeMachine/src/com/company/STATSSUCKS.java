@@ -1,26 +1,30 @@
 package com.company;
 
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class STATSSUCKS {
     public static void main(String[] args) {
-        int score = 0;
-        int tosses = 0;
+        Scanner Sc = new Scanner(System.in);
+        int total = 0;
+        int number;
+        int winners = 0;
 
-        while(score < 12){
-            if(ThreadLocalRandom.current().nextInt(0,10) >= 4) {
-                score += 0;
-                tosses++;
+        for (int j = 0; j < 10; j++) {
+            while (total <= 400) {
+                number = Sc.nextInt();
+
+                if (number == 9) total += 200;
+                else if (number == 8) total += 100;
+                else if (number > 5) total += 50;
+                else total += 20;
+
+                winners++;
             }
-            else if (ThreadLocalRandom.current().nextInt(0,10) >= 1){
-                score += 1;
-                tosses++;
-            }
-            else {
-                score += 3;
-                tosses++;
-            }
+            total = 0;
         }
-        System.out.println(tosses);
+        System.out.println((double) winners / 10.0);
     }
+
 }
+
